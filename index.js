@@ -7,7 +7,7 @@ function Currencies() {
     React.useEffect(() => {
         fetch(`https://economia.awesomeapi.com.br/json/last/${currency}-BRL`)
         .then(response => response.json())
-        .then(output => setData(output[`${currency}BRL`]))
+        .then(response => setData(response[`${currency}BRL`]))
     }, [currency])
 
     const bid = Number(data.bid).toLocaleString("pt-BR", {style:"currency", currency:`${currency}`})

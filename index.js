@@ -9,8 +9,8 @@ function Currencies() {
         .then(response => response.json())
         .then(response => setData(response[`${currency}BRL`]))
     }, [currency])
-
-    const bid = Number(data.bid).toLocaleString("pt-BR", {style:"currency", currency:`${currency}`})
+    const bid = Math.round(Number(data.bid)*100) / 100
+    const price = bid.toLocaleString("pt-BR", {style:"currency", currency:`${currency}`})
     
     return (
         <section id="content">
@@ -19,7 +19,7 @@ function Currencies() {
             <button className="currencies" onClick={() => setCurrency("USD")}>Dólar</button>
             <button className="currencies" onClick={() => setCurrency("GBP")}>Libra</button>
 
-            <h2>Cotação atual: <span id="bid">{bid}</span></h2>
+            <h2>Cotação atual: <span id="bid">{price}</span></h2>
         </section>
     )
 }

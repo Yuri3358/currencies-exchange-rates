@@ -1,0 +1,31 @@
+body {
+    background-color: gray;
+}
+
+#content {
+    background-color: rgb(73, 73, 245);
+    border-color: black;
+    margin: auto;
+    text-align: center;
+    width: 20cm;
+    border-style: groove;
+    border-radius: 10px;
+}
+
+.currencies {
+    font-size: 40px;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 60px
+}
+
+h2 {
+    font-size: 40px;
+}
+
+#bid {
+    color: yellow;
+}

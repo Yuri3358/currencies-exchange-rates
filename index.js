@@ -1,24 +1,36 @@
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
 function Currencies() {
+    const header = new Headers()
+    header.append("apikey", api_token.apikey)
+
     const [currency, setCurrency] = React.useState("USD")
     const [data, setData] = React.useState([])
-    
+    const [list_currencies, setListCurrencies] = React.useState([])
+    const req_sets = {
+        headers: header,
+    }
+
     React.useEffect(() => {
-        fetch(`https://economia.awesomeapi.com.br/json/last/${currency}-BRL`)
-        .then(response => response.json())
-        .then(response => setData(response[`${currency}BRL`]))
+    fetch(`https://api.apilayer.com/exchangerates_data/latest?symbols=BRL&base=${currency}`, req_sets)
+    .then(response => response.json())
+    .then(output => setData(output.rates.BRL))
     }, [currency])
-    const bid = Math.round(Number(data.bid)*100) / 100
-    const price = bid.toLocaleString("pt-BR", {style:"currency", currency:`BRL`})
+
+    React.useEffect(() => {
+        fetch(`https://api.apilayer.com/exchangerates_data/symbols`, req_sets)
+        .then(response => response.json())
+        .then(output => setListCurrencies(Object.keys(output.symbols)))
+    }, [currency])
+
+    const price = data.toLocaleString("pt-BR", {style:"currency", currency:"BRL"})
     
     return (
         <section id="content">
             <h1>Cotação de moedas</h1>
-            <button className="currencies" onClick={() => setCurrency("EUR")}>Euro</button>
-            <button className="currencies" onClick={() => setCurrency("USD")}>Dólar</button>
-            <button className="currencies" onClick={() => setCurrency("GBP")}>Libra</button>
-
+            <select id="currency_list" onChange={(e) => setCurrency(e.target.value)}> 
+                {list_currencies.map((currencies, index) => <option key={index}>{currencies}</option>)}
+            </select>
             <h2>Cotação atual: <span id="bid">{price}</span></h2>
         </section>
     )

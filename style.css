@@ -12,6 +12,10 @@ body {
     border-radius: 10px;
 }
 
+#currency_list {
+    font-size: 30px;
+}
+
 h1 {
     font-size: 60px
 }

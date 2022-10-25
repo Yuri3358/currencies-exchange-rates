@@ -10,7 +10,7 @@ function Currencies() {
         .then(response => setData(response[`${currency}BRL`]))
     }, [currency])
     const bid = Math.round(Number(data.bid)*100) / 100
-    const price = bid.toLocaleString("pt-BR", {style:"currency", currency:`${currency}`})
+    const price = bid.toLocaleString("pt-BR", {style:"currency", currency:`BRL`})
     
     return (
         <section id="content">

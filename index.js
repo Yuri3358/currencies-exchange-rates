@@ -31,7 +31,7 @@ function Currencies() {
             <select id="currency_list" onChange={(e) => setCurrency(e.target.value)}> 
                 {list_currencies.map((currencies, index) => <option key={index}>{currencies}</option>)}
             </select>
-            <h2>Cotação atual: <span id="bid">{price}</span></h2>
+            <h2>Taxa de câmbio atual: <span id="bid">{price}</span></h2>
         </section>
     )
 }

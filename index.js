@@ -7,9 +7,7 @@ function Currencies() {
     const [currency, setCurrency] = React.useState("USD")
     const [data, setData] = React.useState([])
     const [list_currencies, setListCurrencies] = React.useState([])
-    const req_sets = {
-        headers: header,
-    }
+    const req_sets = {headers: header}
 
     React.useEffect(() => {
     fetch(`https://api.apilayer.com/exchangerates_data/latest?symbols=BRL&base=${currency}`, req_sets)
@@ -31,14 +29,16 @@ function Currencies() {
             <select id="currency_list" onChange={(e) => setCurrency(e.target.value)}> 
                 {list_currencies.map((currencies, index) => <option key={index}>{currencies}</option>)}
             </select>
-            <h2>Taxa de câmbio atual: <span id="bid">{price}</span></h2>
+            <h2>Cotação atual: <span id="bid">{price}</span></h2>
         </section>
     )
 }
 
 function App() {
     return (
-        <Currencies/>
+        <div>
+            <Currencies/>
+        </div>
     )
 }
 

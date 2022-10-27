@@ -36,7 +36,6 @@ function Currencies() {
     )
 }
 
-
 function App() {
     return (
         <Currencies/>

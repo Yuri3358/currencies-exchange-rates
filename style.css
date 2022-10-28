@@ -2,6 +2,14 @@ body {
     background-color: gray;
 }
 
+h1 {
+    font-size: 60px
+}
+
+h2 {
+    font-size: 40px;
+}
+
 #content {
     background-color: rgb(73, 73, 245);
     border-color: black;
@@ -12,22 +20,11 @@ body {
     border-radius: 10px;
 }
 
-#currency_list {
+.entries {
     font-size: 30px;
+    text-align: center;
 }
 
-h1 {
-    font-size: 60px
-}
-
-h2 {
-    font-size: 40px;
-}
 #bid {
     color: yellow;
-}
-.currencies {
-    font-size: 40px;
-    display: inline-block;
-    border-radius: 10px;
 }

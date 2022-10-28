@@ -4,9 +4,11 @@ function Currencies() {
     const header = new Headers()
     header.append("apikey", api_token.apikey)
 
-    const [currency, setCurrency] = React.useState("USD")
+    const [value, setValue] = React.useState(1)
     const [data, setData] = React.useState([])
     const [list_currencies, setListCurrencies] = React.useState([])
+    const [currency, setCurrency] = React.useState("AED")
+
     const req_sets = {headers: header}
 
     React.useEffect(() => {
@@ -21,14 +23,27 @@ function Currencies() {
         .then(output => setListCurrencies(Object.keys(output.symbols)))
     }, [currency])
 
-    const price = data.toLocaleString("pt-BR", {style:"currency", currency:"BRL"})
-    
+    const result = Number(data*value)
+    const price = result.toLocaleString("pt-BR", {style:"currency", currency:"BRL"})
+
     return (
         <section id="content">
             <h1>Cotação de moedas</h1>
-            <select id="currency_list" onChange={(e) => setCurrency(e.target.value)}> 
+            <select 
+                className="entries" 
+                onChange={(e) => setCurrency(e.target.value)}> 
                 {list_currencies.map((currencies, index) => <option key={index}>{currencies}</option>)}
             </select>
+
+            <input 
+                type="number"
+                className="entries"
+                placeholder="Quantidade" 
+                min="1"
+                max="10000000000"
+                onChange={(e) => setValue(e.target.value)}>
+            </input>
+
             <h2>Cotação atual: <span id="bid">{price}</span></h2>
         </section>
     )

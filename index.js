@@ -2,8 +2,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"))
 
 function Currencies() {
     const header = new Headers()
-    header.append("apikey", api_token.apikey)
-
+    header.append("apikey", token.api_key)
     const [value, setValue] = React.useState(1)
     const [data, setData] = React.useState([])
     const [list_currencies, setListCurrencies] = React.useState([])

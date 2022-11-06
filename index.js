@@ -48,12 +48,4 @@ function Currencies() {
     )
 }
 
-function App() {
-    return (
-        <div>
-            <Currencies/>
-        </div>
-    )
-}
-
-root.render(<App/>)
+root.render(<Currencies/>)
